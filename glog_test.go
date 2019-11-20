@@ -329,10 +329,7 @@ func TestVmoduleGlob(t *testing.T) {
 func TestRollover(t *testing.T) {
 	setFlags()
 	var err error
-	defer func(previous func(error)) { logExitFunc = previous }(logExitFunc)
-	logExitFunc = func(e error) {
-		err = e
-	}
+
 	defer func(previous uint64) { MaxSize = previous }(MaxSize)
 	MaxSize = 512
 
